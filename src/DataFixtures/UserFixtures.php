@@ -20,7 +20,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user->setFirstname($faker->firstName);
             $user->setLastname($faker->lastName);
             $user->setEmail($faker->companyEmail);
-            $user->setPassword(password_hash($faker->password, PASSWORD_DEFAULT));
             $user->setPhone($faker->phoneNumber);
 
             $user->setCustomer($this->getReference(rand(1,20)));

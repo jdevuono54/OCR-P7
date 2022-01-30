@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Ignore;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -20,31 +22,35 @@ class User
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max = 255)
      * @ORM\Column(type="string", length=255)
      */
     private $firstname;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max = 255)
      * @ORM\Column(type="string", length=255)
      */
     private $lastname;
 
     /**
+     * @Assert\Email
+     * @Assert\Length(max = 255)
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max = 20)
      * @ORM\Column(type="string", length=20)
      */
     private $phone;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $password;
-
-    /**
+     * @Ignore()
      * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="user")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -99,18 +105,6 @@ class User
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
 
         return $this;
     }

@@ -1,0 +1,13 @@
+App\Entity\Phone:
+  collectionOperations:
+    get: ~
+  itemOperations:
+    get: ~
+
+App\Entity\User:
+  collectionOperations:
+    get: ~
+    post: ~
+  itemOperations:
+    get: ~
+    delete: ~
